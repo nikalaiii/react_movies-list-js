@@ -33,4 +33,3 @@ export const MovieCard = ({ movie }) => (
     </div>
   </div>
 );
-

@@ -1,11 +1,15 @@
 import './MovieList.scss';
 import { MovieCard } from '../MovieCard/MovieCard';
-import movies from '../../api/movies.json';
+import moviesFromServer from '../../api/movies.json';
 
-export const MovieList = () => (
+export const MovieList = ({ movies: moviesFromProps = moviesFromServer }) => (
   <div className="movies">
-    {movies.map(movie => (
-      <MovieCard key={movie.imdbId} movie={movie} />
-    ))}
+    {moviesFromProps.length === 0 ? (
+      <p data-cy="NoMoviesMessage">No movies available</p>
+    ) : (
+      moviesFromProps.map(movie => (
+        <MovieCard key={movie.imdbId} movie={movie} />
+      ))
+    )}
   </div>
 );
